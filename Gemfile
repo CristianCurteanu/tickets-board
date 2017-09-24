@@ -45,6 +45,8 @@ group :test do
   gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'shoulda'
+  gem 'airborne'
+  gem 'webmock'
 end
 
 group :development, :test do

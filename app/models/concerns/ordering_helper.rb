@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OrderingHelper
   extend ActiveSupport::Concern
 
@@ -7,7 +9,7 @@ module OrderingHelper
 
   def change_order(other)
     transaction do
-      current_order = self.order_number
+      current_order = order_number
       self.order_number = other.order_number
       other.order_number = current_order
     end

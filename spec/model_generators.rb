@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ModelGenerators
   def user_generator
     lambda do
@@ -30,9 +32,9 @@ module ModelGenerators
 
   def ticket_generator
     lambda do
-      Ticket.create! title: Faker::Hacker.abbreviation,
+      Ticket.create! title:       Faker::Hacker.abbreviation,
                      description: Faker::Hacker.say_something_smart,
-                     column: column_generator.call
+                     column:      column_generator.call
     end
   end
 end

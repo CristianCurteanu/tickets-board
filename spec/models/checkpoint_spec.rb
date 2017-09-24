@@ -5,9 +5,9 @@ require 'rails_helper'
 describe Checkpoint, type: :model do
   let(:checkpoint_data) do
     {
-      title: Faker::Hacker.say_something_smart,
+      title:       Faker::Hacker.say_something_smart,
       rate_points: rand((0.to_f..5.to_f)).round(1),
-      ticket: ticket_generator.call
+      ticket:      ticket_generator.call
     }
   end
 
