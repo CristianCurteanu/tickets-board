@@ -5,7 +5,6 @@ module Api
     def current_user
       authorization ||= AuthorizationService.call(request.headers)
       return authorization.result if authorization.result.present? && !expired?
-
     end
 
     def authorized?

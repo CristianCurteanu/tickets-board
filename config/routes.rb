@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get 'hello_world', to: 'hello_world#index'
 
   namespace :api do
     # Session
-    resource :session, only: [:create, :destroy]
+    resource :session, only: %i[create destroy]
 
     # User (Tested)
     get :user, to: 'users#show'
@@ -14,6 +16,8 @@ Rails.application.routes.draw do
     get 'board/:id', to: 'boards#show', as: :board
     post :board, to: 'boards#create'
     put 'board/:id', to: 'boards#update', as: :board_update
+    put 'board/:id/user', to: 'boards#add_user', as: :add_board_user
+    delete 'board/:id/user', to: 'boards#remove_user', as: :remove_board_user
 
     # Columns
     get 'board/columns', to: 'columns#all'
