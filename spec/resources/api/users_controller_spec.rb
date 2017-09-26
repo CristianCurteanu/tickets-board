@@ -15,40 +15,36 @@ describe 'User resource', type: :request do
   describe 'GET #create' do
     it 'should register new client' do
       password = JWT.encode({ data: Faker::Internet.password }, ENV['PUBLIC_KEY'])
-      post '/api/registration', params: { email: Faker::Internet.email,
-                                          token: password,
+      post '/api/registration', params: { email:      Faker::Internet.email,
+                                          token:      password,
                                           first_name: Faker::Name.first_name,
-                                          last_name:  Faker::Name.last_name
-                                        }
+                                          last_name:  Faker::Name.last_name }
       expect_status 201
     end
 
     it 'should not be able to register without token' do
-      post '/api/registration', params: { email: Faker::Internet.email,
-                                          token: nil,
+      post '/api/registration', params: { email:      Faker::Internet.email,
+                                          token:      nil,
                                           first_name: Faker::Name.first_name,
-                                          last_name:  Faker::Name.last_name
-                                        }
+                                          last_name:  Faker::Name.last_name }
       expect_status 400
     end
 
     it 'should not be able to register without email' do
       password = JWT.encode({ data: Faker::Internet.password }, ENV['PUBLIC_KEY'])
-      post '/api/registration', params: { email: nil,
-                                          token: password,
+      post '/api/registration', params: { email:      nil,
+                                          token:      password,
                                           first_name: Faker::Name.first_name,
-                                          last_name:  Faker::Name.last_name
-                                        }
+                                          last_name:  Faker::Name.last_name }
       expect_status 400
     end
 
     it 'should not be able to register without first name' do
       password = JWT.encode({ data: Faker::Internet.password }, ENV['PUBLIC_KEY'])
-      post '/api/registration', params: { email: Faker::Internet.email,
-                                          token: password,
+      post '/api/registration', params: { email:      Faker::Internet.email,
+                                          token:      password,
                                           first_name: nil,
-                                          last_name:  Faker::Name.last_name
-                                        }
+                                          last_name:  Faker::Name.last_name }
       expect_status 400
     end
   end

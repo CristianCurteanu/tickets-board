@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
     error! 404, message: ex.message
   end
 
-  def token_wrong_format(ex)
+  def token_wrong_format(_ex)
     error! 400, message: 'Check your JWT data'
   end
 end
