@@ -11,12 +11,12 @@ class Column < ApplicationRecord
             :status_name,
             presence: true
 
-  after_initialize :default_order_number, if: -> { self.order_number.nil? }
+  after_initialize :default_order_number, if: -> { order_number.nil? }
 
   private
 
   def last_order_number
-    return 0 unless self.board
-    self.board.columns.order(order_number: :desc).first.try(:order_number) || 0
+    return 0 unless board
+    board.columns.order(order_number: :desc).first.try(:order_number) || 0
   end
 end

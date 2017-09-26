@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170924060815) do
+ActiveRecord::Schema.define(version: 20170925091820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,11 @@ ActiveRecord::Schema.define(version: 20170924060815) do
     t.datetime "updated_at", null: false
     t.index ["ticket_id"], name: "index_comments_on_ticket_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "session_tokens", force: :cascade do |t|
+    t.string   "token"
+    t.datetime "expires_at"
   end
 
   create_table "tickets", force: :cascade do |t|

@@ -12,7 +12,7 @@ describe Comment, type: :model do
   end
 
   it 'should have text' do
-    comment = Comment.new(user: user_generator.call,
+    comment = Comment.new(user:   user_generator.call,
                           ticket: ticket_generator.call)
     expect(comment).not_to be_valid
   end

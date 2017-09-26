@@ -9,12 +9,12 @@ class Ticket < ApplicationRecord
 
   validates :title, :description, presence: true
 
-  after_initialize :default_order_number, if: -> { self.order_number.nil? }
+  after_initialize :default_order_number, if: -> { order_number.nil? }
 
   private
 
   def last_order_number
-    return 0 unless self.column
-    self.column.tickets.order(order_number: :desc).first.try(:order_number) || 0
+    return 0 unless column
+    column.tickets.order(order_number: :desc).first.try(:order_number) || 0
   end
 end

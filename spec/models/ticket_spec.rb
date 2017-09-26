@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Ticket, type: :model do
@@ -7,9 +9,9 @@ describe Ticket, type: :model do
 
   let(:ticket_data) do
     {
-      title: Faker::Hacker.abbreviation,
+      title:       Faker::Hacker.abbreviation,
       description: Faker::Hacker.say_something_smart,
-      column: column_generator.call
+      column:      column_generator.call
     }
   end
 
